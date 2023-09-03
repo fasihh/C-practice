@@ -6,9 +6,9 @@ void main() {
     int number;
 
     do {
-		printf("Input number > 0: ");
-		scanf("%d", &number);	
-	} while (number < 0);
+	printf("Input number > 0: ");
+	scanf("%d", &number);	
+    } while (number < 0);
 
     printf("Answer is %d\n\n", factorial(number, 1));
 
