@@ -23,6 +23,6 @@ int factorial(int number, int answer) {
         printf("answer = %d, number = %d\n", answer, number);
         return factorial(number, answer);
     } else {
-        return 0;
+        return answer;
     };
 };
