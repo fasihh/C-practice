@@ -35,6 +35,8 @@ int SieveOfErathenoeous(int n) {
 		if(numberList[j] == 0) {continue;};
 
 		skip = numberList[j];
+
+		// prime number
 		printf(" %d", skip);
 
 		// removal loop
