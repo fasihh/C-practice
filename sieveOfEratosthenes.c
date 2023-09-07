@@ -7,7 +7,7 @@ void main() {
 	int n;
 
 	printf("Sieve of Eratosthenes\nPrints all prime numbers less than 'n'\n");
-	printf("Input n: 25\n");
+	printf("Input n: ");
 	scanf("%d", n);
 
 	printf("List of prime numbers:");
