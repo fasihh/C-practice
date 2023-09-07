@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int SieveOfErathenoeous(int);
+int SieveOfEratosthenes(int);
 
 void main() {
 	int n;
@@ -11,10 +11,10 @@ void main() {
 	scanf("%d", n);
 
 	printf("List of prime numbers:");
-	SieveOfErathenoeous(n);
+	SieveOfEratosthenes(n);
 };
 
-int SieveOfErathenoeous(int n) {
+int SieveOfEratosthenes(int n) {
 	int *numberList;
 	int skip;
 
