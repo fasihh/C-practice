@@ -1,23 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int SieveOfEratosthenes(int);
+int SieveOfEratosthenes(int[], int);
 
-void main() {
+int main() {
+	int *numberList;
 	int n;
 
 	printf("Sieve of Eratosthenes\nPrints all prime numbers less than 'n'\n");
 	printf("Input n: ");
-	scanf("%d", n);
+	scanf("%d", &n);
 
-	printf("List of prime numbers:");
-	SieveOfEratosthenes(n);
-};
-
-int SieveOfEratosthenes(int n) {
-	int *numberList;
-	int skip;
-
+	// creating list
 	numberList = (int *)malloc((n - 3) * sizeof(int));
 
 	if (numberList == NULL) {
@@ -30,13 +24,20 @@ int SieveOfEratosthenes(int n) {
 		numberList[i] = i + 2;
 	};
 
+	printf("List of prime numbers:");
+	SieveOfEratosthenes(numberList, n);
+
+	free(numberList);
+};
+
+int SieveOfEratosthenes(int numberList[], int n) {
+	int skip;
+
 	// main loop 
 	for(int j = 0; j < (n - 2); j++) {
 		if(numberList[j] == 0) {continue;};
 
 		skip = numberList[j];
-
-		// prime number
 		printf(" %d", skip);
 
 		// removal loop
