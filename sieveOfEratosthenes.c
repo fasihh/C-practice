@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int SieveOfEratosthenes(int[], int);
+void SieveOfEratosthenes(int[], int);
 
 int main() {
 	int *numberList;
@@ -30,7 +30,7 @@ int main() {
 	free(numberList);
 };
 
-int SieveOfEratosthenes(int numberList[], int n) {
+void SieveOfEratosthenes(int numberList[], int n) {
 	int skip;
 
 	// main loop 
