@@ -58,10 +58,10 @@ int isValid(int date, int month, int year) {
 		if (date > 29 && month == 2) {
 			return 0;
 		};
-	} else {
-		if (date > 28 && month == 2) {
-			return 0;
-		};
+	};
+	
+	if (date > 28 && month == 2) {
+		return 0;
 	};
 	return 1;
 };
