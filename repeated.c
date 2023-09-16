@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void main() {
-	int value = 0, count = 0, r = 0, isRepeated = 0;
+	int count = 0, r = 0, isRepeated = 0;
 	int arr[] = {2, 2, 4, 1, 0, 5, 6, 6, 6, 11, 2};
 	int *repeated = (int *)malloc(sizeof(int) * 11);
 
