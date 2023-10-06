@@ -51,13 +51,48 @@ char getTurn(int turn) {
 }
 
 void setValue(char* grid, int *pos, int turn) {
-	*(grid + pos[0]*3 + pos[1]) = getTurn(turn);
+	char ch = getTurn(turn);
+	*(grid + pos[0]*3 + pos[1]) = ch;
+}
 
+bool checkHorizontal(char *graph, int row, char ch) {
+	for (int i = 0; i < 3; i++) {
+		if (*(graph + row*3 + i) != ch) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool checkVertical(char *graph, int col, char ch) {
+	for (int i = 0; i < 3; i++) {
+		if (*(graph + i*3 + col) != ch) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool checkDiagonal(char *grid, char ch) {
+	for (int i = 0; i < 3; i++) {
+		if (*(grid + i*3 + i) != ch) {
+			return false;
+		}
+	}
+
+	for (int i = 0, j = 2; i < 3; i++, j--) {
+		if (*(grid + j*3 + i) != ch) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 // game logic remaining 
 bool checkStatus(char *grid, int turn) {
-	char ch = getTurn(turn);
 	
 	return true;
 }
@@ -77,6 +112,7 @@ int main() {
 
 		} while (!checkPos(grid, pos));
 
+		//printf("%d\n", checkDiagonal(grid, getTurn(turn)));
 		setValue(grid, pos, turn);
 		displayGrid(grid);
 		turn++;
