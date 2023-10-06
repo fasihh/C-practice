@@ -46,24 +46,18 @@ bool checkPos(char *grid, int *pos) {
 	return (pos[0] > 2 || pos[1] > 2 || pos[0] < 0 || pos[1] < 0 || (*(grid + pos[0]*3 + pos[1]) != CH)) ? false :  true; 
 }
 
-void setValue(char* grid, int *pos, int turn) {
-	char ch;
-	if (turn & 1) 
-		ch = 'x';
-	else
-		ch = 'o';
+char getTurn(int turn) {
+	return (turn & 1) ? 'x' : 'o';
+}
 
-	*(grid + pos[0]*3 + pos[1]) = ch;
+void setValue(char* grid, int *pos, int turn) {
+	*(grid + pos[0]*3 + pos[1]) = getTurn(turn);
 
 }
 
+// game logic remaining 
 bool checkStatus(char *grid, int turn) {
-	char ch;
-	if (turn & 1) 
-		ch = 'x';
-	else
-		ch = 'o';
-
+	char ch = getTurn(turn);
 	
 	return true;
 }
