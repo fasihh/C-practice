@@ -2,8 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <conio.h>
 
 #define CH '.'
+
+char *createGrid() {
+	char *grid = (char *)calloc(9, sizeof(char));
+	memset(grid, CH, 9);
+
+	return grid;
+}
 
 void displayGrid(char *grid) {
 	printf("  ");
@@ -20,13 +28,6 @@ void displayGrid(char *grid) {
 	}
 }
 
-char *createGrid() {
-	char *grid = (char *)calloc(9, sizeof(char));
-	memset(grid, CH, 9);
-
-	return grid;
-}
-
 int *getPos(char *pos) {
 	int x, y;
 
@@ -41,7 +42,7 @@ int *getPos(char *pos) {
 	return (int[2]){x, y};
 }
 
-int checkPos(char *grid, int *pos) {
+bool checkPos(char *grid, int *pos) {
 	return (pos[0] > 2 || pos[1] > 2 || pos[0] < 0 || pos[1] < 0 || (*(grid + pos[0]*3 + pos[1]) != CH)) ? false :  true; 
 }
 
@@ -56,10 +57,36 @@ void setValue(char* grid, int *pos, int turn) {
 
 }
 
-int main() {
-	char  *grid = createGrid();
+bool checkStatus(char *grid, int turn) {
+	char ch;
+	if (turn & 1) 
+		ch = 'x';
+	else
+		ch = 'o';
+
 	
+	return true;
+}
+
+int main() {
+	char posInput[2];
+	int turn = 0;
+	int *pos;
+	char *grid = createGrid();
 	displayGrid(grid);
 	
+	while (checkStatus(grid, turn)) {
+		do {
+			printf("Enter position: ");
+			gets(posInput);
+			pos = getPos(posInput);
+
+		} while (!checkPos(grid, pos));
+
+		setValue(grid, pos, turn);
+		displayGrid(grid);
+		turn++;
+	}
+
 	return 0;
 }
