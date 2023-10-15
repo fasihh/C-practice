@@ -1,37 +1,20 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-void main() {
-	int count = 0, r = 0, isRepeated = 0;
-	int arr[] = {2, 2, 4, 1, 0, 5, 6, 6, 6, 11, 2};
-	int *repeated = (int *)malloc(sizeof(int) * 11);
+int main() {
+	int arr[8] = {2, 4, 2, 3, 5, 5, 4, 4};
+	int freq[100] = {0};
+	int max = 1 << 31;
 
-	for (int i = 0; i < 11; i++) {
-		isRepeated = 0;
-		count = 0;
+	for (int i = 0; i < 8; i++) {
+		if (max < arr[i]) max = arr[i];
+		freq[arr[i]]++;
+	} 
 
-		for (int k = 0; k < 11; k += 2) {
-			if (arr[i] == repeated[k]) {
-				isRepeated = 1;
-				break;
-			}
-		}
-
-		if (isRepeated) {continue;}
-
-		for (int j = 0; j < 11; j++) {
-			if (arr[i] == arr[j]) {
-				count++;
-			}
-		}
-
-		repeated[r] = arr[i];
-		repeated[r + 1] = count;
-
-		r += 2;
+	for (int j = 0; j <= max; j++) {
+		if (!freq[j]) continue;
+		printf("Frequency of %d = %d\n", j, freq[j]);
 	}
+	printf("\n");
 
-	for (int p = 0; p < 11; p += 2) {
-		printf("%d is repeated %d times\n", repeated[p], repeated[p + 1]);
-	}
+	return 0;
 }
